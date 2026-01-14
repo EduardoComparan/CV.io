@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Technical_Core_Irving_Comparan</title>
     <style>
-        /* Estética Hardened: Sin dependencias externas para evitar errores de carga */
         :root {
             --cyan: #00f2ff;
             --green: #4ade80;
@@ -20,75 +19,106 @@
             color: var(--text);
             font-family: 'Consolas', 'Monaco', monospace;
             margin: 0;
-            padding: 20px;
+            padding: 10px; /* Reducido para móviles */
         }
 
         .dashboard {
             max-width: 1150px;
             margin: 0 auto;
             border: 1px solid var(--border);
-            padding: 30px;
+            padding: 15px; /* Ajuste dinámico */
             box-shadow: 0 0 40px rgba(0,0,0,0.6);
+            border-radius: 8px;
         }
 
-        /* HEADER */
+        /* HEADER RESPONSIVO */
         .sys-header {
             border-bottom: 2px solid var(--cyan);
-            padding-bottom: 20px;
-            margin-bottom: 30px;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            flex-direction: column; /* Apilado en móvil */
+            gap: 10px;
         }
 
-        .sys-title h1 { margin: 0; color: #fff; font-size: 26px; letter-spacing: 2px; }
-        .status-badge { color: var(--green); font-size: 12px; border: 1px solid var(--green); padding: 3px 10px; text-transform: uppercase; }
+        .sys-title h1 { 
+            margin: 0; 
+            color: #fff; 
+            font-size: 20px; /* Más pequeño en móvil */
+            letter-spacing: 1px; 
+        }
 
-        /* GRID SYSTEM */
+        .status-badge { 
+            align-self: flex-start; 
+            color: var(--green); 
+            font-size: 10px; 
+            border: 1px solid var(--green); 
+            padding: 2px 8px; 
+        }
+
+        /* GRID SYSTEM: 1 columna por defecto (móvil) */
         .grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
+            grid-template-columns: 1fr; 
+            gap: 15px;
         }
 
         .box {
             background: var(--panel);
             border: 1px solid var(--border);
-            padding: 22px;
+            padding: 15px;
             border-radius: 4px;
         }
 
-        .full-width { grid-column: 1 / -1; }
-
         .box-h {
             color: var(--cyan);
-            font-size: 14px;
+            font-size: 13px;
             text-transform: uppercase;
-            margin-bottom: 18px;
+            margin-bottom: 12px;
             display: block;
             border-bottom: 1px solid var(--border);
-            padding-bottom: 8px;
+            padding-bottom: 6px;
             font-weight: bold;
         }
 
-        /* TAGS */
+        /* TAGS AJUSTADOS */
         .tag {
             display: inline-block;
             border: 1px solid var(--cyan);
             color: var(--cyan);
-            padding: 4px 12px;
-            margin: 4px;
-            font-size: 11px;
+            padding: 3px 8px;
+            margin: 3px;
+            font-size: 10px;
             background: rgba(0, 242, 255, 0.05);
         }
 
-        /* CONTENT LINES */
-        .log-line { margin-bottom: 15px; line-height: 1.6; font-size: 14px; }
-        .prefix { color: var(--green); margin-right: 12px; font-weight: bold; }
-        .val { color: #fff; background: #21262d; padding: 2px 6px; border-radius: 2px; font-weight: bold; }
-        .desc { color: #8b949e; display: block; margin-left: 25px; font-size: 13px; }
+        /* LÍNEAS DE CONTENIDO */
+        .log-line { margin-bottom: 12px; line-height: 1.4; font-size: 13px; }
+        .prefix { color: var(--green); margin-right: 8px; font-weight: bold; }
+        .val { color: #fff; background: #21262d; padding: 2px 5px; border-radius: 2px; }
+        .desc { color: #8b949e; display: block; margin-top: 4px; font-size: 12px; }
 
-        @media (max-width: 850px) { .grid { grid-template-columns: 1fr; } }
+        footer {
+            margin-top: 25px;
+            border-top: 1px solid var(--border);
+            padding-top: 15px;
+            font-size: 10px;
+            color: #8b949e;
+            text-align: center;
+            line-height: 1.5;
+        }
+
+        /* --- MEDIA QUERIES PARA TABLETS Y PC --- */
+        @media (min-width: 768px) {
+            body { padding: 20px; }
+            .dashboard { padding: 30px; }
+            .sys-header { flex-direction: row; justify-content: space-between; align-items: center; }
+            .sys-title h1 { font-size: 26px; }
+            .grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+            .full-width { grid-column: 1 / -1; }
+            .box-h { font-size: 14px; }
+            .log-line { font-size: 14px; }
+        }
     </style>
 </head>
 <body>
@@ -97,94 +127,25 @@
     <header class="sys-header">
         <div class="sys-title">
             <h1>IRVING_COMPARAN.sh</h1>
-            <div style="color: var(--cyan); font-size: 14px; margin-top: 5px;">SecOps & Infrastructure Architect // Expertise: Cybersecurity Resilience</div>
+            <div style="color: var(--cyan); font-size: 12px; margin-top: 5px;">SecOps & Infrastructure Architect</div>
         </div>
         <div class="status-badge">Terminal: Authorized</div>
     </header>
 
     <div class="grid">
-        
         <div class="box">
             <span class="box-h">[01] SECURITY_STACK</span>
             <div class="tag">Palo Alto PA-3410/3510</div>
             <div class="tag">BDS Hillstone</div>
-            <div class="tag">SSL Decryption / App-ID</div>
+            <div class="tag">SSL Decryption</div>
             <div class="tag">Nessus / Qualys</div>
-            <div class="tag">SOCRADAR Intelligence</div>
+            <div class="tag">SOCRADAR</div>
             <div class="tag">Spam Titan Cloud</div>
             <div class="tag">ESET Protect</div>
         </div>
 
         <div class="box">
             <span class="box-h">[02] INFRASTRUCTURE_STACK</span>
-            <div class="tag">VMware ESXi (High Availability)</div>
+            <div class="tag">VMware ESXi (HA)</div>
             <div class="tag">Microsoft MECM / SCCM</div>
-            <div class="tag">Windows Server 2016-2022</div>
-            <div class="tag">LTO Tape Backup (Veeam/Veritas)</div>
-            <div class="tag">Hardening (CIS Benchmarks)</div>
-            <div class="tag">Active Directory Admin</div>
-        </div>
-
-        <div class="box full-width">
-            <span class="box-h">[03] GOVERNANCE_&_DOCUMENTATION (MGSI ALIGNMENT)</span>
-            
-            <div class="log-line">
-                <span class="prefix">#</span> <span style="color:#fff;">POLÍTICAS GENERALES DE SEGURIDAD:</span>
-                <span class="desc">Desarrollo y alineación de normativas institucionales para el cumplimiento del Modelo de Gestión de Seguridad de la Información (MGSI).</span>
-            </div>
-
-            <div class="log-line">
-                <span class="prefix">#</span> <span style="color:#fff;">GUÍAS OPERATIVAS (SOP):</span>
-                <span class="desc">Creación de manuales de procedimientos para la operación de infraestructura crítica y respuesta ante incidentes.</span>
-            </div>
-
-            <div class="log-line">
-                <span class="prefix">#</span> <span style="color:#fff;">POLÍTICAS ESPECÍFICAS DE SEGURIDAD:</span>
-                <span class="desc">Documentación técnica de Hardening para servidores, control de acceso perimetral y gestión de identidades.</span>
-            </div>
-        </div>
-
-        <div class="box full-width">
-            <span class="box-h">[04] CORE_CAPABILITIES_LOG</span>
-            
-            <div class="log-line">
-                <span class="prefix">></span> <span style="color:#fff;">MASS_VULN_PATCHING:</span> 
-                Remediación de <span class="val">3,000+ vulnerabilidades</span> en servidores productivos en ciclo de 30 días.
-            </div>
-
-            <div class="log-line">
-                <span class="prefix">></span> <span style="color:#fff;">VIRTUAL_HOSPITAL_DEPLOY:</span> 
-                Provisionamiento de infraestructura para <span class="val">+200 servidores</span> y thin clients en entorno VMware.
-            </div>
-
-            <div class="log-line">
-                <span class="prefix">></span> <span style="color:#fff;">EDGE_SECURITY_UPGRADE:</span> 
-                Migración de enlaces WAN y reimplementación de <span class="val">Palo Alto PA-3510</span> sin pérdida de servicio.
-            </div>
-
-            <div class="log-line">
-                <span class="prefix">></span> <span style="color:#fff;">DRP_DATA_PROTECTION:</span> 
-                Estrategia de respaldo en <span class="val">Cintas y Bóvedas Offline</span> para protección efectiva contra Ransomware.
-            </div>
-        </div>
-
-        <div class="box full-width">
-            <span class="box-h">[05] SYSTEM_VALIDATIONS</span>
-            <div style="display: flex; flex-wrap: wrap; gap: 15px;">
-                <span style="color:var(--green)">[OK] SOC Analyst & SOCRADAR</span>
-                <span style="color:var(--green)">[OK] Azure Fundamentals</span>
-                <span style="color:var(--green)">[OK] Microsoft MECM Expert</span>
-                <span style="color:var(--green)">[OK] ESET Protect Entry</span>
-                <span style="color:var(--green)">[OK] IT Essentials CISCO</span>
-                <span style="color:var(--green)">[OK] Scrum Foundation</span>
-            </div>
-        </div>
-    </div>
-
-    <footer style="margin-top: 30px; border-top: 1px solid var(--border); padding-top: 15px; font-size: 11px; color: #8b949e; text-align: center;">
-        IRVING EDUARDO COMPARÁN LOZANO | CDMX | 5642015915 | irving.eduardo.comparan@outlook.com
-    </footer>
-</div>
-
-</body>
-</html>
+            <div class="tag">Windows
